@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <title>시공간박제 뷰어</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- 빌드 도구 없이 CDN에서 버전 고정으로 불러온다 (Spark 2.4.0: SPZ v4 / SOG 읽기 지원) -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/",
+        "@sparkjsdev/spark": "https://cdn.jsdelivr.net/npm/@sparkjsdev/spark@2.4.0/dist/spark.module.min.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="app"></div>
+
+  <!-- 시작 화면: 오디오 자동재생 정책 때문에 사용자 동작으로 입장 -->
+  <div id="intro" class="overlay">
+    <div class="intro-card">
+      <p class="eyebrow">시공간박제</p>
+      <h1 id="intro-title">불러오는 중…</h1>
+      <p id="intro-time" class="muted"></p>
+      <div class="progress"><div id="progress-bar"></div></div>
+      <p id="progress-text" class="muted small">capsule.json 읽는 중</p>
+      <button id="enter-btn" disabled>박제 안으로 들어가기</button>
+      <p class="muted small help-desktop">클릭하면 마우스로 시점 회전 · WASD 이동 · Shift 달리기 · Esc 마우스 해제</p>
+      <p class="muted small help-touch">왼쪽 아래 드래그로 이동 · 화면 오른쪽 드래그로 둘러보기</p>
+    </div>
+  </div>
+
+  <div id="error" class="overlay hidden">
+    <div class="intro-card">
+      <h1>열 수 없어요</h1>
+      <p id="error-text" class="muted"></p>
+    </div>
+  </div>
+
+  <!-- 정보 패널 -->
+  <aside id="panel" class="panel hidden">
+    <button id="panel-toggle" class="icon-btn" aria-label="정보 접기/펼치기">i</button>
+    <div id="panel-body">
+      <h2 id="m-title"></h2>
+      <dl>
+        <dt>시각</dt><dd id="m-time"></dd>
+        <dt>장소</dt><dd id="m-place"></dd>
+        <dt>좌표</dt><dd id="m-coord"></dd>
+      </dl>
+      <h3>그날의 날씨</h3>
+      <div class="weather">
+        <div class="temp" id="w-temp"></div>
+        <div>
+          <div id="w-cond"></div>
+          <div class="muted small" id="w-detail"></div>
+        </div>
+      </div>
+      <p class="muted small" id="w-source"></p>
+      <h3>소리</h3>
+      <div class="audio-row">
+        <button id="audio-btn" class="icon-btn" aria-label="재생/일시정지">▶</button>
+        <input id="volume" type="range" min="0" max="1" step="0.01" value="0.7" aria-label="볼륨" />
+      </div>
+      <p class="muted small" id="audio-note"></p>
+    </div>
+  </aside>
+
+  <!-- 모바일 이동 조이스틱 -->
+  <div id="joystick" class="joystick hidden"><div class="knob"></div></div>
+
+  <!-- ?debug=1 일 때만 표시 -->
+  <pre id="debug" class="debug hidden"></pre>
+
+  <script>window.CAPSULE_CONFIG = {"capsule":"2026-11-24_1107","base":"capsules"};</script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

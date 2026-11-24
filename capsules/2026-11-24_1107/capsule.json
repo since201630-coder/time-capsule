@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "id": "2026-11-24_1107",
+  "title": "박제 1호: 행궁동 골목",
+  "capturedAt": {
+    "start": "2026-11-24T11:07:14+09:00",
+    "end": "2026-11-24T11:15:57+09:00"
+  },
+  "location": {
+    "name": "수원 행궁동 일대 골목",
+    "address": "경기 수원시 팔달구 (정확한 주소 미입력)",
+    "lat": 37.2855,
+    "lng": 127.0169,
+    "lengthMeters": 30
+  },
+  "weather": {
+    "temperatureC": 2.6,
+    "condition": "",
+    "humidityPercent": 40,
+    "windMs": 7.2,
+    "source": "기상청 날씨누리 (경기 수원시 팔달구 행궁동), 2026-11-24 12:00 현재값 — 촬영 약 1시간 뒤 기준",
+    "feelsLikeC": -2.7,
+    "windDirection": "북서",
+    "precipitationMm": null,
+    "airQuality": {
+      "pm25": 7,
+      "pm10": 35,
+      "o3ppm": 0.027,
+      "source": "한국환경공단 신풍동측정소, 2026-11-24 11:00 기준"
+    },
+    "sun": {
+      "sunrise": "07:20",
+      "sunset": "17:16"
+    }
+  },
+  "assets": {
+    "splat": "scene.spz",
+    "audio": "ambient.m4a",
+    "rawVideos": [
+      "raw/street-01/1-front-back.MOV",
+      "raw/street-01/2-left45.MOV",
+      "raw/street-01/3-right45.MOV",
+      "raw/street-01/4-high.MOV",
+      "raw/street-01/5-low.MOV"
+    ]
+  },
+  "notes": "아이폰 영상 5개(정면 왕복, 좌45°, 우45°, 높게, 낮게)를 이어 붙인 raw/street-01-all.mov에서 3D Splat App으로 423프레임 추출, Medium 학습(409/423 포즈 성공, 약 210만 스플랫). 시각·좌표는 영상 메타데이터 기준(종료 시각은 마지막 영상 길이로 계산). 오디오는 정면 왕복 영상의 현장음(발소리 포함). 학습 결과가 앱에서 위아래가 뒤집혀 보였음.",
+  "viewer": {
+    "startPosition": [0.28, -1.12, -16.1],
+    "startLookAt": [0, 0.48, 0],
+    "eyeHeight": 1.6,
+    "splatRotation": [0, -10.5, 0],
+    "splatScale": 3.5,
+    "bounds": { "min": [-1.58, -16.8], "max": [1.33, 11.55] }
+  }
+}
